@@ -5,15 +5,15 @@ Why do we need this? See [common-use-cases](#common-use-cases)
 
 ## Parameters
 
-| Parameter  | Default | Optional |     | Description                                                                                                                                                |
-|------------|---------|----------|:----|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `data`     | -       | no       |     | The data you want to generate a schema for.<br/>Note: use either this or `url`                                                                             |
-| `url`      | -       | no       |     | A URL where your data to generate a schema for is returned upon a GET request.<br/>Note: use either this or `data`                                         |
-| `encoding` | nop     | yes      |     | A supported encoding to use to decode `data` or `url` content. Can be `nop`, `base64` or `hex`                                                             |
-| `input`    | yaml    | yes      |     | A supported format to use to parse the input `data` or `url` content. Can be `yaml` or `json`                                                              |
-| `output`   | json    | yes      |     | A supported format to use to serialize the schema generated. Can be `yaml` or `json`                                                                       |
-| `generate` | true    | yes      |     | A boolean specifying if the `data` or `url` content should generate a schema or if they should be taken as they are<br/>Useful for CRDs (see examples)     |
-| `selector` | -       | yes      |     | A string defining the path to select on the `data` or `url` content to be used instead of the full content. Eg.: `/spec/versions/0/schema/openAPIV3Schema` |
+| Parameter  | Default | Optional | Description                                                                                                                                                |
+|------------|---------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `data`     | -       | no       | The data you want to generate a schema for.<br/>Note: use either this or `url`                                                                             |
+| `url`      | -       | no       | A URL where your data to generate a schema for is returned upon a GET request.<br/>Note: use either this or `data`                                         |
+| `encoding` | nop     | yes      | A supported encoding to use to decode `data` or `url` content. Can be `nop`, `base64` or `hex`                                                             |
+| `input`    | yaml    | yes      | A supported format to use to parse the input `data` or `url` content. Can be `yaml` or `json`                                                              |
+| `output`   | json    | yes      | A supported format to use to serialize the schema generated. Can be `yaml` or `json`                                                                       |
+| `generate` | true    | yes      | A boolean specifying if the `data` or `url` content should generate a schema or if they should be taken as they are<br/>Useful for CRDs (see examples)     |
+| `selector` | -       | yes      | A string defining the path to select on the `data` or `url` content to be used instead of the full content. Eg.: `/spec/versions/0/schema/openAPIV3Schema` |
 
 ## API description
 
@@ -77,10 +77,10 @@ Example:
 
 #### Kubernetes CRDs
 
-Kubernetes CRDs already contains an OpenAPI schema in the field `openAPIV3Schema` which, from version 3.1.0,
+Kubernetes CRDs already contain an OpenAPI schema in the field `openAPIV3Schema` which, from version 3.1.0,
 is 100% compatible with json schema. As such, you already have the schema included in the CRD, in a manner.
 
-If you still want to use this API, you can use these parameters:
+If you then want to use this API, you can use these parameters:
 
 | Parameter  | Value                                                                   |
 |------------|-------------------------------------------------------------------------|
