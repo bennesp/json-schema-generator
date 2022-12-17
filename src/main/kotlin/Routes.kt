@@ -1,6 +1,6 @@
 import encoding.Encoding
 import exceptions.BadRequestException
-import format.Format
+import formats.Format
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.server.application.*
@@ -32,10 +32,12 @@ fun Route.main() {
         }
 
         // Generate schema
-        val generator = SchemaGenerator(Format.fromString(inputFormat), Format.fromString(outputFormat))
-        val schema = generator.generate(decodedContent)
+        val schemaService = SchemaService(Format.fromString(inputFormat), Format.fromString(outputFormat))
+        val parsedContent = schemaService.parse(decodedContent)
+        val schema = schemaService.generate(parsedContent)
+        val schemaAsString = schemaService.toString(schema)
 
         // Respond to client
-        call.respond(schema)
+        call.respond(schemaAsString)
     }
 }

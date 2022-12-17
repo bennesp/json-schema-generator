@@ -2,7 +2,7 @@ package model
 
 import encoding.Encoding
 import exceptions.BadRequestException
-import format.Format
+import formats.Format
 import io.ktor.http.*
 import org.apache.commons.validator.routines.UrlValidator
 import java.net.InetAddress
