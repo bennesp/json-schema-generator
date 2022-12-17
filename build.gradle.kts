@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "it.bennesp.json-schema-generator"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -60,4 +60,16 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "it.bennes.jsonSchemaGenerator.MainKt"
+    }
+    val dependencies = configurations
+        .runtimeClasspath
+        .get()
+        .map(::zipTree)
+    from(dependencies)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
