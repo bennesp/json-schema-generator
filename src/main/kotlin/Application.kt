@@ -12,13 +12,6 @@ fun Application.module() {
     val log = environment.log
 
     install(CallLogging) {
-        // TODO customize format to use json
-        /*
-        {"level":"info","msg":"I have to go...","time":"2021-07-03T10:18:10Z"}
-        {"level":"info","msg":"Stopping server gracefully","time":"2021-07-03T10:18:10Z"}
-        {"entryPointName":"web","level":"debug","msg":"Waiting 10s seconds before killing connections.","time":"2021-07-03T10:18:10Z"}
-        {"entryPointName":"web","level":"error","msg":"accept tcp [::]:80: use of closed network connection","time":"2021-07-03T10:18:10Z"}
-        */
         disableDefaultColors()
         callIdMdc("call-id")
     }
