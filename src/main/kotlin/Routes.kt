@@ -11,8 +11,12 @@ import model.Request
 fun Route.main() {
     get("/") {
         val params = call.request.queryParameters
+        val log = call.application.environment.log
 
-        val (url, data, inputFormat, outputFormat, encoding) = Request.fromParameters(params)
+        val request = Request.fromParameters(params)
+        val (url, data, inputFormat, outputFormat, encoding) = request
+
+        Utils.logRequest(log, request, "Request received")
 
         // Get url content
         val content = if (url != null) {
