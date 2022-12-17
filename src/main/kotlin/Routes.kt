@@ -14,7 +14,7 @@ fun Route.main() {
         val log = call.application.environment.log
 
         val request = Request.fromParameters(params)
-        val (url, data, inputFormat, outputFormat, encoding) = request
+        val (url, data, inputFormat, outputFormat, encoding, generate, selector) = request
 
         Utils.logRequest(log, request, "Request received")
 
@@ -36,12 +36,33 @@ fun Route.main() {
         }
 
         // Generate schema
+        //   1. Parse data
         val schemaService = SchemaService(Format.fromString(inputFormat), Format.fromString(outputFormat))
         val parsedContent = schemaService.parse(decodedContent)
-        val schema = schemaService.generate(parsedContent)
+
+        //   2. Select data, if selector is provided
+        val selectedContent = if (selector != null) {
+            val node = parsedContent.at(selector)
+            if (node.isMissingNode) {
+                throw BadRequestException("selector did not match any node")
+            }
+            node
+        } else {
+            parsedContent
+        }
+
+        //   3. Generate schema, if generate is true
+        val schema = if (generate) {
+            schemaService.generate(selectedContent)
+        } else {
+            selectedContent
+        }
+
+        //   4. Encode schema
         val schemaAsString = schemaService.toString(schema)
 
-        // Respond to client
+        //   5. Respond with the schema to the client
         call.respond(schemaAsString)
+
     }
 }

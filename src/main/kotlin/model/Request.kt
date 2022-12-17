@@ -15,6 +15,8 @@ data class Request(
     val inputFormat: String,
     val outputFormat: String,
     val encoding: String,
+    val generate: Boolean,
+    val selector: String?,
 ) {
     companion object {
         private val urlValidator = UrlValidator(arrayOf("http", "https"))
@@ -67,12 +69,27 @@ data class Request(
                 Encoding.Nop.name
             }
 
+            val generate = if ("generate" in p) {
+                p["generate"]!!.lowercase().toBooleanStrictOrNull()
+                    ?: throw BadRequestException("generate must be 'true' or 'false'")
+            } else {
+                true
+            }
+
+            val selector = if ("selector" in p) {
+                p["selector"]!!
+            } else {
+                null
+            }
+
             return Request(
                 url = url,
                 data = data,
                 inputFormat = inputFormat,
                 outputFormat = outputFormat,
                 encoding = encoding,
+                generate = generate,
+                selector = selector,
             )
         }
     }
