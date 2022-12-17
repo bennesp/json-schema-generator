@@ -1,6 +1,8 @@
 package model
 
+import encoding.Encoding
 import exceptions.BadRequestException
+import format.Format
 import io.ktor.http.*
 import org.apache.commons.validator.routines.UrlValidator
 import java.net.InetAddress
@@ -50,19 +52,19 @@ data class Request(
             val inputFormat = if ("input" in p) {
                 p["input"]!!
             } else {
-                "yaml"
+                Format.Yaml.name
             }
 
             val outputFormat = if ("output" in p) {
                 p["output"]!!
             } else {
-                "json"
+                Format.Json.name
             }
 
             val encoding = if ("encoding" in p) {
                 p["encoding"]!!
             } else {
-                "text"
+                Encoding.Nop.name
             }
 
             return Request(
