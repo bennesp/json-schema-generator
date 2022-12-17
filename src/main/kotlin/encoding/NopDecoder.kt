@@ -1,5 +1,5 @@
 package encoding
 
-class TextDecoder : Decoder {
+class NopDecoder : Decoder {
     override fun decode(input: String): String = input
 }
