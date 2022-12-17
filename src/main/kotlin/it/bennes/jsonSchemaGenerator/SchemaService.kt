@@ -1,7 +1,9 @@
+package it.bennes.jsonSchemaGenerator
+
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.saasquatch.jsonschemainferrer.JsonSchemaInferrer
-import formats.Format
+import it.bennes.jsonSchemaGenerator.formats.Format
 
 class SchemaService(inputFormat: Format, outputFormat: Format) {
     private var inputMapper = ObjectMapper(inputFormat.factory)

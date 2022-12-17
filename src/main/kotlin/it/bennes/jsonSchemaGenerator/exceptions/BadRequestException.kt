@@ -1,4 +1,4 @@
-package exceptions
+package it.bennes.jsonSchemaGenerator.exceptions
 
 import io.ktor.http.*
 

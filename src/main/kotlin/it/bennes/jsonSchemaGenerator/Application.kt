@@ -1,4 +1,6 @@
-import exceptions.HTTPException
+package it.bennes.jsonSchemaGenerator
+
+import it.bennes.jsonSchemaGenerator.exceptions.HTTPException
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.callid.*

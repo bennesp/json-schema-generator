@@ -1,8 +1,8 @@
-package model
+package it.bennes.jsonSchemaGenerator.model
 
-import encoding.Encoding
-import exceptions.BadRequestException
-import formats.Format
+import it.bennes.jsonSchemaGenerator.encoding.Encoding
+import it.bennes.jsonSchemaGenerator.exceptions.BadRequestException
+import it.bennes.jsonSchemaGenerator.formats.Format
 import io.ktor.http.*
 import org.apache.commons.validator.routines.UrlValidator
 import java.net.InetAddress
@@ -63,8 +63,8 @@ data class Request(
                 Format.Json.name
             }
 
-            val encoding = if ("encoding" in p) {
-                p["encoding"]!!
+            val encoding = if ("it/bennes/jsonSchemaGenerator/encodingsp/jsonSchemaGenerator/encoding" in p) {
+                p["it/bennes/jsonSchemaGenerator/encodingsp/jsonSchemaGenerator/encoding"]!!
             } else {
                 Encoding.Nop.name
             }

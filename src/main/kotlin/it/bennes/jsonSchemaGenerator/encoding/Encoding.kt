@@ -1,4 +1,4 @@
-package encoding
+package it.bennes.jsonSchemaGenerator.encoding
 
 enum class Encoding(val decoder: Decoder) {
     Nop(NopDecoder()),
