@@ -22,11 +22,7 @@ fun Route.main() {
 
         // Get url content
         val content = if (url != null) {
-            val response: HttpResponse = HttpClient.client.get(url)
-            if (response.status.value !in 200..299) {
-                throw BadRequestException("url returned invalid status code ${response.status.value} (not 2xx)")
-            }
-            response.bodyAsText()
+            HttpClient.get(url).bodyAsText()
         } else data ?: throw BadRequestException("No url or data provided")
 
         // Decode data
