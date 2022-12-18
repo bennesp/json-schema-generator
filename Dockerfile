@@ -3,7 +3,6 @@ FROM gradle:7.6.0-jdk17 as builder
 WORKDIR /home/gradle/src
 COPY . .
 RUN gradle build
-RUN ls -lha /home/gradle/src/build/libs/
 
 FROM amazoncorretto:17.0.5
 WORKDIR /app
