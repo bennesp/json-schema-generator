@@ -93,3 +93,4 @@ Example:
 ```yaml
 # yaml-language-server: $schema=https://jsg.arma.bennes.it?url=https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/crds/application-crd.yaml&generate=false&selector=/spec/versions/0/schema/openAPIV3Schema
 ```
+
