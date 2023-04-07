@@ -1,5 +1,5 @@
 # Dockerfile for a kotlin ktor server project
-FROM gradle:7.6.0-jdk17 as builder
+FROM gradle:8.0.2-jdk17 as builder
 WORKDIR /home/gradle/src
 COPY . .
 RUN gradle build
