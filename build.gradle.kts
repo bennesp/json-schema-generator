@@ -39,6 +39,10 @@ dependencies {
     implementation("org.yaml:snakeyaml:2.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
 
+    // CVE-2022-1471: https://github.com/FasterXML/jackson-dataformats-text/issues/361
+    // CVE-2022-41854: ???
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2")
+
     // Cx78f40514-81ff: the vulnerable function is not used
     @Suppress("VulnerableLibrariesLocal")
     implementation("commons-validator:commons-validator:1.7")
