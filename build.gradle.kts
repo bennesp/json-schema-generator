@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm") version "1.8.20"
 }
@@ -9,9 +7,7 @@ version = "1.0.0"
 
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://jitpack.io")
-    }
+    maven("https://jitpack.io")
 }
 
 dependencies {
@@ -38,11 +34,10 @@ dependencies {
     implementation("ch.qos.logback.contrib:logback-json-classic:0.1.5")
     implementation("ch.qos.logback.contrib:logback-jackson:0.1.5")
 
+    // json-schema-inferrer and its dependencies with non-vulnerable versions
     implementation("com.github.saasquatch:json-schema-inferrer:0.1.5")
-
-    // CVE-2022-1471: https://github.com/FasterXML/jackson-dataformats-text/issues/361
-    // CVE-2022-41854: ???
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2")
+    implementation("org.yaml:snakeyaml:2.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
 
     // Cx78f40514-81ff: the vulnerable function is not used
     @Suppress("VulnerableLibrariesLocal")
@@ -56,10 +51,6 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
 }
 
 tasks.jar {
