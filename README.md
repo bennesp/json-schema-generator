@@ -3,7 +3,7 @@
 This is a simple API to generate json schema from data.
 Why do we need this? See [common-use-cases](#common-use-cases)
 
-## Getting Started
+## Getting Started
 
 ```
 docker run --rm -ti -p 8080:8080 ghcr.io/bennesp/json-schema-generator:latest
