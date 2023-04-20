@@ -3,6 +3,18 @@
 This is a simple API to generate json schema from data.
 Why do we need this? See [common-use-cases](#common-use-cases)
 
+## Getting Started
+
+```
+docker run --rm -ti -p 8080:8080 ghcr.io/bennesp/json-schema-generator:latest
+```
+
+Then, you can access the API at `http://localhost:8080`:
+
+```
+curl -X GET "http://localhost:8080?url=https://raw.githubusercontent.com/argoproj/argo-helm/main/charts/argo-cd/values.yaml"
+```
+
 ## Parameters
 
 | Parameter  | Default | Optional | Description                                                                                                                                                |
