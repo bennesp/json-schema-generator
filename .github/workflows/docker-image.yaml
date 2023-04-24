@@ -3,6 +3,8 @@ name: Create and publish Docker image
 on:
   push:
     tags: ['v*']
+    branches:
+      - master
   pull_request:
     branches: [master]
   workflow_dispatch: {}
