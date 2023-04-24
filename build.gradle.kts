@@ -37,7 +37,7 @@ dependencies {
     // json-schema-inferrer and its dependencies with non-vulnerable versions
     implementation("com.github.saasquatch:json-schema-inferrer:0.1.5")
     implementation("org.yaml:snakeyaml:2.0")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0")
 
     // CVE-2022-1471: https://github.com/FasterXML/jackson-dataformats-text/issues/361
     // CVE-2022-41854: ???
