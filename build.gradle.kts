@@ -35,7 +35,7 @@ dependencies {
     implementation("ch.qos.logback.contrib:logback-jackson:0.1.5")
 
     // json-schema-inferrer and its dependencies with non-vulnerable versions
-    implementation("com.github.saasquatch:json-schema-inferrer:0.1.5")
+    implementation("com.github.saasquatch:json-schema-inferrer:0.2.0")
     implementation("org.yaml:snakeyaml:2.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0")
 
