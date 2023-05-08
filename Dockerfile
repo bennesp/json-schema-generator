@@ -4,7 +4,7 @@ WORKDIR /home/gradle/src
 COPY . .
 RUN gradle build
 
-FROM amazoncorretto:17.0.5
+FROM amazoncorretto:17.0.7
 WORKDIR /app
 COPY --from=builder /home/gradle/src/build/libs/*.jar /app/app.jar
 
