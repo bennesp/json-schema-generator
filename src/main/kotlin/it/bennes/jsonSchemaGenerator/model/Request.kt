@@ -63,8 +63,8 @@ data class Request(
                 Format.Json.name
             }
 
-            val encoding = if ("it/bennes/jsonSchemaGenerator/encodingsp/jsonSchemaGenerator/encoding" in p) {
-                p["it/bennes/jsonSchemaGenerator/encodingsp/jsonSchemaGenerator/encoding"]!!
+            val encoding = if ("encoding" in p) {
+                p["encoding"]!!
             } else {
                 Encoding.Nop.name
             }
