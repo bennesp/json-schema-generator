@@ -38,19 +38,23 @@ dependencies {
     implementation("com.github.saasquatch:json-schema-inferrer:0.2.0")
     implementation("org.yaml:snakeyaml:2.1")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
-
-    // CVE-2022-1471: https://github.com/FasterXML/jackson-dataformats-text/issues/361
-    // CVE-2022-41854: ???
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.2")
 
     // Cx78f40514-81ff: the vulnerable function is not used
-    @Suppress("VulnerableLibrariesLocal")
     implementation("commons-validator:commons-validator:1.7")
 
     // Force transient dependencies to use a newer version to avoid vulnerabilities in ktor-server-netty
     implementation("io.netty:netty-codec:4.1.96.Final")
 
     testImplementation(kotlin("test"))
+}
+
+configurations.all {
+    // Avoid Cx78f40514-81ff replacing old commons-collections with commons-collections4
+    resolutionStrategy.dependencySubstitution {
+        substitute(module("commons-collections:commons-collections:3.2.2"))
+            .using(module("org.apache.commons:commons-collections4:4.4"))
+    }
 }
 
 tasks.test {
