@@ -12,7 +12,7 @@ object Utils {
         MDC.put("data (length)", (r.data?.length ?: 0).toString())
         MDC.put("inputFormat", r.inputFormat)
         MDC.put("outputFormat", r.outputFormat)
-        MDC.put("it/bennes/jsonSchemaGenerator/encodingsp/jsonSchemaGenerator/encoding", r.encoding)
+        MDC.put("encoding", r.encoding)
         MDC.put("generate", r.generate.toString())
         MDC.put("selector", r.selector)
 
@@ -23,7 +23,7 @@ object Utils {
         MDC.remove("data (length)")
         MDC.remove("inputFormat")
         MDC.remove("outputFormat")
-        MDC.remove("it/bennes/jsonSchemaGenerator/encodingsp/jsonSchemaGenerator/encoding")
+        MDC.remove("encoding")
         MDC.remove("generate")
         MDC.remove("selector")
     }
