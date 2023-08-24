@@ -7,7 +7,7 @@ interface IJsonSchemaInferrer {
     fun inferForSample(content: JsonNode): JsonNode
 }
 
-public class JsonSchemaInferrer : IJsonSchemaInferrer {
+class JsonSchemaInferrer : IJsonSchemaInferrer {
     private val inferrer: JsonSchemaInferrer = JsonSchemaInferrer.newBuilder().build()
     override fun inferForSample(content: JsonNode): JsonNode {
         return inferrer.inferForSample(content)
