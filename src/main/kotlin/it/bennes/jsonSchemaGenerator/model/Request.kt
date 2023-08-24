@@ -40,7 +40,7 @@ data class Request(
                     || address.isSiteLocalAddress
                     || address.isMulticastAddress
                 ) {
-                    throw BadRequestException("url must not be localhost")
+                    throw BadRequestException("url must not be local")
                 }
                 uri.toString()
             } else null
@@ -54,19 +54,19 @@ data class Request(
             val inputFormat = if ("input" in p) {
                 p["input"]!!
             } else {
-                Format.Yaml.name
+                Format.Yaml.name.lowercase()
             }
 
             val outputFormat = if ("output" in p) {
                 p["output"]!!
             } else {
-                Format.Json.name
+                Format.Json.name.lowercase()
             }
 
             val encoding = if ("encoding" in p) {
                 p["encoding"]!!
             } else {
-                Encoding.Nop.name
+                Encoding.Nop.name.lowercase()
             }
 
             val generate = if ("generate" in p) {
