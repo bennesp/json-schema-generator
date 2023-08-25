@@ -3,11 +3,11 @@ package it.bennes.jsonSchemaGenerator
 import it.bennes.jsonSchemaGenerator.encoding.Encoding
 import it.bennes.jsonSchemaGenerator.exceptions.BadRequestException
 import it.bennes.jsonSchemaGenerator.formats.Format
-import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import it.bennes.jsonSchemaGenerator.model.JsonSchemaInferrer
 import it.bennes.jsonSchemaGenerator.model.Request
 
 fun Route.main() {
@@ -25,42 +25,55 @@ fun Route.main() {
             HttpClient.get(url).bodyAsText()
         } else data ?: throw BadRequestException("No url or data provided")
 
-        // Decode data
-        val encoder = Encoding.fromString(encoding)
-        val decodedContent = try {
-            encoder.decoder.decode(content)
-        } catch (e: Exception) {
-            throw BadRequestException("error during decoding: ${e.message}")
-        }
-
         // Generate schema
-        //   1. Parse data
-        val schemaService = SchemaService(Format.fromString(inputFormat), Format.fromString(outputFormat))
-        val parsedContent = schemaService.parse(decodedContent)
+        val schemaAsString = generateSchemaAsString(encoding, content, inputFormat, outputFormat, selector, generate)
 
-        //   2. Select data, if selector is provided
-        val selectedContent = if (selector != null) {
-            val node = parsedContent.at(selector)
-            if (node.isMissingNode) {
-                throw BadRequestException("selector did not match any node")
-            }
-            node
-        } else {
-            parsedContent
-        }
-
-        //   3. Generate schema, if generate is true
-        val schema = if (generate) {
-            schemaService.generate(selectedContent)
-        } else {
-            selectedContent
-        }
-
-        //   4. Encode schema
-        val schemaAsString = schemaService.toString(schema)
-
-        //   5. Respond with the schema to the client
+        // Respond with the schema to the client
         call.respond(schemaAsString)
 
     }
+}
+
+private fun generateSchemaAsString(
+    encoding: String,
+    content: String,
+    inputFormat: String,
+    outputFormat: String,
+    selector: String?,
+    generate: Boolean,
+): String {
+    // Generate schema
+    //   1. Decode data
+    val encoder = Encoding.fromString(encoding)
+    val decodedContent = try {
+        encoder.decoder.decode(content)
+    } catch (e: Exception) {
+        throw BadRequestException("error during decoding: ${e.message}")
+    }
+
+    //   2. Parse data
+    val inferrer = JsonSchemaInferrer()
+    val schemaService = SchemaService(inferrer, Format.fromString(inputFormat), Format.fromString(outputFormat))
+    val parsedContent = schemaService.parse(decodedContent)
+
+    //   3. Select data, if selector is provided
+    val selectedContent = if (selector != null) {
+        val node = parsedContent.at(selector)
+        if (node.isMissingNode) {
+            throw BadRequestException("selector did not match any node")
+        }
+        node
+    } else {
+        parsedContent
+    }
+
+    //   4. Generate schema, if generate is true
+    val schema = if (generate) {
+        schemaService.generate(selectedContent)
+    } else {
+        selectedContent
+    }
+
+    //   5. Encode schema
+    return schemaService.toString(schema)
 }

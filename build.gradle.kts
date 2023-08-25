@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
     kotlin("jvm") version "1.9.0"
 }
@@ -13,6 +15,7 @@ repositories {
 dependencies {
     @Suppress("LocalVariableName")
     val ktor_version = "2.3.3"
+
     @Suppress("LocalVariableName")
     val logback_version = "1.4.11"
 
@@ -59,6 +62,11 @@ configurations.all {
 
 tasks.test {
     useJUnitPlatform()
+    maxParallelForks = 4
+
+    testLogging {
+        events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+    }
 }
 
 tasks.jar {
