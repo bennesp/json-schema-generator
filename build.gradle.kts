@@ -17,7 +17,7 @@ dependencies {
     val ktor_version = "2.3.10"
 
     @Suppress("LocalVariableName")
-    val logback_version = "1.5.3"
+    val logback_version = "1.5.5"
 
     // Ktor server
     implementation("io.ktor:ktor-server-core:$ktor_version")
