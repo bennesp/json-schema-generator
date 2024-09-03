@@ -23,6 +23,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      attestations: write
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -52,6 +54,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name == 'push' && 'true' || 'false' }}
+          sbom: ${{ github.event_name == 'push' && 'true' || 'false' }}
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
