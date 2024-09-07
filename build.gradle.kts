@@ -47,7 +47,7 @@ dependencies {
     implementation("commons-validator:commons-validator:1.9.0")
 
     // Force transient dependencies to use a newer version to avoid vulnerabilities in ktor-server-netty
-    implementation("io.netty:netty-codec:4.1.112.Final")
+    implementation("io.netty:netty-codec:4.1.113.Final")
 
     testImplementation(kotlin("test"))
 }
