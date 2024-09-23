@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21.0.4_7-jdk as builder
+FROM eclipse-temurin:23_37-jdk as builder
 WORKDIR /home/gradle/src
 
 # Download dependencies
@@ -10,7 +10,7 @@ RUN ./gradlew build
 COPY . .
 RUN ./gradlew build
 
-FROM eclipse-temurin:21.0.4_7-jre
+FROM eclipse-temurin:23_37-jre
 WORKDIR /app
 COPY --from=builder /home/gradle/src/build/libs/*.jar /app/app.jar
 
