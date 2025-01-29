@@ -1,12 +1,11 @@
 package it.bennes.jsonSchemaGenerator
 
+import io.ktor.client.statement.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import it.bennes.jsonSchemaGenerator.encoding.Encoding
 import it.bennes.jsonSchemaGenerator.exceptions.BadRequestException
 import it.bennes.jsonSchemaGenerator.formats.Format
-import io.ktor.client.statement.*
-import io.ktor.server.application.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
 import it.bennes.jsonSchemaGenerator.model.JsonSchemaInferrer
 import it.bennes.jsonSchemaGenerator.model.Request
 

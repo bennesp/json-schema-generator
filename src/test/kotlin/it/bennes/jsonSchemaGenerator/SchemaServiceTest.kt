@@ -32,7 +32,8 @@ class SchemaServiceTest {
     fun `valid simple generate`() {
         val schemaService = SchemaService(JsonSchemaInferrer(), Format.Json, Format.Json)
         val input = """{"a":1}"""
-        val expected = """{"${"$"}schema":"http://json-schema.org/draft-04/schema#","type":"object","properties":{"a":{"type":"integer"}}}"""
+        val expected =
+            """{"${"$"}schema":"http://json-schema.org/draft-04/schema#","type":"object","properties":{"a":{"type":"integer"}}}"""
         val actual = schemaService.generate(schemaService.parse(input))
 
         assertEquals(expected, actual.toString())

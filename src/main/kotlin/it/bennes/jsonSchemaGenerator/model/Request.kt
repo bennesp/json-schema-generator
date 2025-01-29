@@ -1,9 +1,9 @@
 package it.bennes.jsonSchemaGenerator.model
 
+import io.ktor.http.*
 import it.bennes.jsonSchemaGenerator.encoding.Encoding
 import it.bennes.jsonSchemaGenerator.exceptions.BadRequestException
 import it.bennes.jsonSchemaGenerator.formats.Format
-import io.ktor.http.*
 import org.apache.commons.validator.routines.UrlValidator
 import java.net.InetAddress
 import java.net.URI

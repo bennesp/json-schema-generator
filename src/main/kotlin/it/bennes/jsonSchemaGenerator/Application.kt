@@ -1,14 +1,14 @@
 package it.bennes.jsonSchemaGenerator
 
-import it.bennes.jsonSchemaGenerator.exceptions.HTTPException
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.callid.*
-import io.ktor.server.plugins.callloging.*
+import io.ktor.server.plugins.calllogging.*
 import io.ktor.server.plugins.compression.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import it.bennes.jsonSchemaGenerator.exceptions.HTTPException
 
 fun Application.module() {
     val log = environment.log
