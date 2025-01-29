@@ -1,8 +1,8 @@
 package it.bennes.jsonSchemaGenerator.encoding
 
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
-import kotlin.test.Test
 
 class EncodingTest {
 

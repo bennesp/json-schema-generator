@@ -1,9 +1,8 @@
 package it.bennes.jsonSchemaGenerator.encoding
 
 
-import java.lang.IllegalArgumentException
-import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 class HexDecoderTest {

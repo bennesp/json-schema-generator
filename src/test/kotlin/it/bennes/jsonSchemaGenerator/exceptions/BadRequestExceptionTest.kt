@@ -6,10 +6,10 @@ import kotlin.test.assertEquals
 
 class BadRequestExceptionTest {
 
-        @Test
-        fun `test constructor`() {
-            val exception = BadRequestException("message")
-            assertEquals("message", exception.message)
-            assertEquals(HttpStatusCode.BadRequest, exception.statusCode)
-        }
+    @Test
+    fun `test constructor`() {
+        val exception = BadRequestException("message")
+        assertEquals("message", exception.message)
+        assertEquals(HttpStatusCode.BadRequest, exception.statusCode)
+    }
 }

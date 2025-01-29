@@ -1,6 +1,5 @@
 package it.bennes.jsonSchemaGenerator.formats
 
-import java.lang.IllegalArgumentException
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
