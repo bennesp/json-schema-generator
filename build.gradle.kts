@@ -40,8 +40,8 @@ dependencies {
     // json-schema-inferrer and its dependencies with non-vulnerable versions
     implementation("com.github.saasquatch:json-schema-inferrer:0.2.1")
     implementation("org.yaml:snakeyaml:2.4")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.2")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.3")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.3")
 
     // Cx78f40514-81ff: the vulnerable function is not used
     implementation("commons-validator:commons-validator:1.9.0")
