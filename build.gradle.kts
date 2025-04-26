@@ -56,7 +56,7 @@ configurations.all {
     // Avoid Cx78f40514-81ff replacing old commons-collections with commons-collections4
     resolutionStrategy.dependencySubstitution {
         substitute(module("commons-collections:commons-collections:3.2.2"))
-            .using(module("org.apache.commons:commons-collections4:4.4"))
+            .using(module("org.apache.commons:commons-collections4:4.5.0"))
     }
 }
 
