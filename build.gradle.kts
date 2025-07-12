@@ -44,7 +44,7 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.19.1")
 
     // Cx78f40514-81ff: the vulnerable function is not used
-    implementation("commons-validator:commons-validator:1.9.0")
+    implementation("commons-validator:commons-validator:1.10.0")
 
     // Force transient dependencies to use a newer version to avoid vulnerabilities in ktor-server-netty
     implementation("io.netty:netty-codec:4.2.2.Final")
