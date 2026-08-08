@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     @Suppress("LocalVariableName")
-    val ktor_version = "3.5.1"
+    val ktor_version = "3.5.2"
 
     @Suppress("LocalVariableName")
     val logback_version = "1.6.1"
