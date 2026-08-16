@@ -48,7 +48,7 @@ jobs:
           platform: ${{ matrix.platform }}
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       # No QEMU: each architecture is built on a runner of that architecture,
       # which for a Gradle build is worth a lot more than emulation.
