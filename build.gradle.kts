@@ -39,7 +39,7 @@ dependencies {
 
     // json-schema-inferrer and its dependencies with non-vulnerable versions
     implementation("com.github.saasquatch:json-schema-inferrer:0.2.1")
-    implementation("org.yaml:snakeyaml:2.6")
+    implementation("org.yaml:snakeyaml:2.7")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.22.2")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.22.2")
 
